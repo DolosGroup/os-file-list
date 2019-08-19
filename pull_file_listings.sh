@@ -9,7 +9,7 @@ else
     username=$(ssh ${target} "whoami")
     ssh ${target} "find / -perm -o+r -type f" > ${output_filename}.${username}_user
     ssh ${target} "sudo find / -perm -o+r -type f" > ${output_filename}.sudo-${username}_user
-    #Create user
+    #Create temporary user "basicuser" with password "basic"
     ssh ${target} "sudo useradd basicuser -m -p '$1$1Bzaee6b$fPEbflSh9oY8ywTi1vYry0'"
     ssh ${target} "sudo mkdir /home/basicuser/.ssh"
     ssh ${target} "sudo chown ${username} /home/basicuser/.ssh"
